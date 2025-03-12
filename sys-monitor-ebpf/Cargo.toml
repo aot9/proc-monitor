@@ -1,0 +1,17 @@
+[package]
+name = "sys-monitor-ebpf"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+sys-monitor-common = { path = "../sys-monitor-common" }
+
+aya-ebpf = { workspace = true }
+aya-log-ebpf = { workspace = true }
+
+[build-dependencies]
+which = { workspace = true }
+
+[[bin]]
+name = "sys-monitor"
+path = "src/main.rs"
