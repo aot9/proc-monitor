@@ -1,10 +1,10 @@
 [package]
-name = "sys-monitor"
+name = "proc-monitor"
 version = "0.1.0"
 edition = "2021"
 
 [dependencies]
-sys-monitor-common = { path = "../sys-monitor-common", features = ["user"] }
+proc-monitor-common = { path = "../proc-monitor-common", features = ["user"] }
 
 anyhow = { workspace = true, default-features = true }
 aya = { workspace = true }
@@ -12,12 +12,14 @@ aya-log = { workspace = true }
 env_logger = { workspace = true }
 libc = { workspace = true }
 log = { workspace = true }
-tokio = { workspace = true, features = ["macros", "rt", "rt-multi-thread", "net", "signal", "sync"] }
-ratatui = "0.29.0"
+tokio = { workspace = true, features = ["full"] }
 clap = { version = "4.5.32", features = ["derive"] }
-crossterm = "0.28.1"
+crossterm = { version = "0.28.1", features = ["event-stream"] }
+ratatui = "0.29.0"
 bytes = "1.10.1"
 chrono = "0.4.40"
+futures = "0.3.31"
+color-eyre = "0.6.3"
 
 [build-dependencies]
 anyhow = { workspace = true }
@@ -34,8 +36,8 @@ aya-build = { workspace = true }
 # Finally note that *any* usage of `artifact = ...` in *any* Cargo.toml in the workspace breaks
 # workflows with stable cargo; stable cargo outright refuses to load manifests that use unstable
 # features.
-sys-monitor-ebpf = { path = "../sys-monitor-ebpf" }
+proc-monitor-ebpf = { path = "../proc-monitor-ebpf" }
 
 [[bin]]
-name = "sys-monitor"
+name = "proc-monitor"
 path = "src/main.rs"

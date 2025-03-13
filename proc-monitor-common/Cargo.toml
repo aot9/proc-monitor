@@ -1,5 +1,5 @@
 [package]
-name = "sys-monitor-common"
+name = "proc-monitor-common"
 version = "0.1.0"
 edition = "2021"
 
